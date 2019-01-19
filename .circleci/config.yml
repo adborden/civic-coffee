@@ -14,8 +14,8 @@ jobs:
           key: v1-bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run: bundle exec jekyll build
-      - run: bundle exec htmlproofer _site
+      - run: make build
+      - run: make test
 
 workflows:
   version: 2

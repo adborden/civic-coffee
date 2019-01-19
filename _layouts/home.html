@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<div class="splash splash--image py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="display-4">{{ site.title | escape }}</h1>
+            <div class="lead">{{ site.description | escape }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col-4">
+      <h2>Upcoming events</h2>
+      <ul class="list-group">
+        {% for event in site.data.upcoming_events %}
+        <li class="list-group-item">
+          <strong>{{ event.title }}</strong><br>
+          {{ event.start_datetime | date: "%a %b %-e %-I:%M%P" }}<br>
+          {% if event.location %}
+          <a href="https://www.google.com/maps/place/{{ event.location | url_encode }}">{{ event.location | escape }}</a>
+          {% else %}
+          <i>TBD</i>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
